@@ -11,7 +11,7 @@ test('should have an a property called classification', () => {
   expect(bp.classification).toBe('Stage 1');
 });
 
-test('should have an a property called classification', () => {
+test('should have an a property called atDate', () => {
   const bp = getLastBloodPressureWithStage(bloodPressures);
   expect(bp).toHaveProperty('atDate');
   expect(bp.atDate).toBe('2018/10/31');
@@ -23,4 +23,10 @@ test('should throw an error if it is not receving an array.', () => {
   expect(() => getLastBloodPressureWithStage(1)).toThrowError(message);
   expect(() => getLastBloodPressureWithStage('a')).toThrowError(message);
   expect(() => getLastBloodPressureWithStage(false)).toThrowError(message);
+});
+
+test('should throw an error if it is receving invalid objects.', () => {
+  expect(() => getLastBloodPressureWithStage([{ SysBP: 120, DiaBP: 90, atDate: 'Value that is not a date' }])).toThrow(
+    'atDate must be a date.'
+  );
 });
