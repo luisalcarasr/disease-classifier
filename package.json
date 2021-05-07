@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "express": "^4.17.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -17,9 +18,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "ui:start": "react-scripts start",
+    "ui:build": "react-scripts build",
+    "ui:test": "react-scripts test",
+    "ui:eject": "react-scripts eject",
+    "api:start": "babel-node src/api/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +41,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.14.1"
   }
 }
