@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import BloodPressuresCard from './components/BloodPressureCard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div id="app">
+      <header>
+        <nav>
+          <h1>Auxita - Disease Classifier (Code Challenge)</h1>
+        </nav>
       </header>
+      <div id="main-container">
+        <BloodPressuresCard></BloodPressuresCard>
+      </div>
     </div>
   );
 }

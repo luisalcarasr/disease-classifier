@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 import 'semantic-ui-css/semantic.min.css';
 import App from './app/App';
 import './index.css';

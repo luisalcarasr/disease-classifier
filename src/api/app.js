@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express, { json } from 'express';
 import { getHypertensionStage } from '../utils/getHypertensionStage';
 import { getKidneyDiseaseClassification } from '../utils/getKidneyDiseaseClassification';
@@ -6,6 +7,7 @@ import { db } from './database';
 const app = express();
 
 app.use(json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello World!' });
