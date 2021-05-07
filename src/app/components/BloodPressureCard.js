@@ -9,13 +9,18 @@ import BloodPressureTable from './BloodPressuresTable';
 const BloodPressuresCard = () => {
   const [bloodPressures, setBloodPressures] = useState([]);
   const [lastBloodPressure, setLastBloodPressure] = useState({});
-  useEffect(() => {
+
+  const refresh = () => {
     axios.get('http://localhost:3001/blood-pressures').then((response) => {
       setBloodPressures(response.data);
     });
     axios.get('http://localhost:3001/blood-pressures/last').then((response) => {
       setLastBloodPressure(response.data);
     });
+  };
+
+  useEffect(() => {
+    refresh();
   }, []);
   return (
     <Card fluid>
@@ -29,7 +34,7 @@ const BloodPressuresCard = () => {
               <BloodPressuresLast bloodPressure={lastBloodPressure}></BloodPressuresLast>
             </Grid.Column>
             <Grid.Column>
-              <BloodPressureForm></BloodPressureForm>
+              <BloodPressureForm onAdd={refresh}></BloodPressureForm>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
