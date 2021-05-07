@@ -14,6 +14,7 @@
     "react-scripts": "4.0.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
+    "sqlite3": "^5.0.2",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
@@ -22,7 +23,8 @@
     "ui:build": "react-scripts build",
     "ui:test": "react-scripts test",
     "ui:eject": "react-scripts eject",
-    "api:start": "babel-node src/api/server.js"
+    "api:start": "babel-node src/api/server.js",
+    "api:migrate": "babel-node src/api/migrations.js"
   },
   "eslintConfig": {
     "extends": [
