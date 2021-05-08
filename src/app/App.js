@@ -1,5 +1,5 @@
 import './App.css';
-import BloodPressuresCard from './components/BloodPressureCard';
+import BloodPressuresCard from './components/HypertensionCalculator/BloodPressureCard';
 
 function App() {
   return (
