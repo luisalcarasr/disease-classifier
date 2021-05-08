@@ -75,7 +75,7 @@ app.delete('/blood-pressures', addBloodPressure, validationMiddleware, (req, res
 app.get('/e-gfr', (req, res) => {
   db.all('SELECT * FROM E_GFR ORDER BY atDate ASC', [], (error, rates) => {
     if (error) {
-      res.statusCode(500);
+      res.status(500);
       res.json(error);
     } else {
       rates = rates.map((rate, index) => {
@@ -92,11 +92,16 @@ app.get('/e-gfr', (req, res) => {
 app.get('/e-gfr/last', (req, res) => {
   db.get('SELECT * FROM E_GFR ORDER BY atDate DESC', [], (error, rate) => {
     if (error) {
-      res.statusCode(500);
+      res.status(500);
       res.json(error);
     } else {
-      rate.classification = getKidneyDiseaseClassification(rate.eGFR);
-      res.json(rate);
+      if (rate) {
+        rate.classification = getKidneyDiseaseClassification(rate.eGFR);
+        res.json(rate);
+      } else {
+        res.status(404);
+        res.send();
+      }
     }
   });
 });
@@ -107,7 +112,7 @@ app.post('/e-gfr', addRate, validationMiddleware, (req, res) => {
     if (!error) {
       res.status(201).json(rate);
     } else {
-      res.statusCode(500);
+      res.status(500);
       res.json(error);
     }
   });
@@ -119,7 +124,7 @@ app.delete('/e-gfr', addRate, validationMiddleware, (req, res) => {
     if (!error) {
       res.status(201).json(rate);
     } else {
-      res.statusCode(500);
+      res.status(500);
       res.json(error);
     }
   });
