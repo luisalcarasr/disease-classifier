@@ -4,7 +4,7 @@ import { Message } from 'semantic-ui-react';
 const BloodPressuresLast = ({ bloodPressure }) => {
   return (
     <Message>
-      <Message.Header>Last Blood Pressure</Message.Header>
+      <Message.Header>Latest reading</Message.Header>
       <Message.List>
         <Message.Item>
           <b>SysBP:</b> {bloodPressure.SysBP}
