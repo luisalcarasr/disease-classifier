@@ -3,6 +3,8 @@ import express, { json } from 'express';
 import { getHypertensionStage } from '../utils/getHypertensionStage';
 import { getKidneyDiseaseClassification } from '../utils/getKidneyDiseaseClassification';
 import { db } from './database';
+import validationMiddleware from './middlewares/validation';
+import addBloodPressure from './validators/addBloodPressure.validator';
 
 const app = express();
 
@@ -28,13 +30,17 @@ app.get('/blood-pressures/last', (req, res) => {
     if (error) {
       res.status(500).json(error);
     } else {
-      bloodPressure.classification = getHypertensionStage(bloodPressure.SysBP, bloodPressure.DiaBP);
-      res.json(bloodPressure);
+      if (bloodPressure) {
+        bloodPressure.classification = getHypertensionStage(bloodPressure.SysBP, bloodPressure.DiaBP);
+        res.json(bloodPressure);
+      } else {
+        res.status(404).json({ message: 'Not found' });
+      }
     }
   });
 });
 
-app.post('/blood-pressures', (req, res) => {
+app.post('/blood-pressures', addBloodPressure, validationMiddleware, (req, res) => {
   const bp = req.body;
   db.run(
     'INSERT INTO BLOOD_PRESSURES (SysBP, DiaBP, atDate) VALUES(?, ?, ?)',
