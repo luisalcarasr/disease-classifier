@@ -29,7 +29,7 @@
     "ui:build": "react-scripts build",
     "ui:eject": "react-scripts eject",
     "api:start": "babel-node src/api/server.js",
-    "api:migrate": "babel-node src/api/migrations.js"
+    "api:migrate": "babel-node src/api/database/migrations.js"
   },
   "eslintConfig": {
     "extends": [

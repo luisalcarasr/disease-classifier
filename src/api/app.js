@@ -3,7 +3,7 @@ import express, { json } from 'express';
 import { getEGFRDrop } from '../utils/getEGFRdrop';
 import { getHypertensionStage } from '../utils/getHypertensionStage';
 import { getKidneyDiseaseClassification } from '../utils/getKidneyDiseaseClassification';
-import { db } from './database';
+import { db } from './database/database';
 import validationMiddleware from './middlewares/validation';
 import addBloodPressure from './validators/addBloodPressure.validator';
 import addRate from './validators/addRate.validator';
