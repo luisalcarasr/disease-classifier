@@ -39,7 +39,7 @@ const BloodPressuresCard = () => {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <BloodPressureTable bloodPressures={bloodPressures}></BloodPressureTable>
+              <BloodPressureTable bloodPressures={bloodPressures} onDelete={refresh}></BloodPressureTable>
             </Grid.Column>
             <Grid.Column>
               <BloodPressureChart bloodPressures={bloodPressures.reverse()}></BloodPressureChart>

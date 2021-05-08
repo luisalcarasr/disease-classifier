@@ -1,5 +1,6 @@
 import './App.css';
 import BloodPressuresCard from './components/HypertensionCalculator/BloodPressureCard';
+import KidneyDiseaseCalculatorCard from './components/KidneyDiseaseCalculator/KidneyDiseaseCalculatorCard';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       </header>
       <div id="main-container">
         <BloodPressuresCard></BloodPressuresCard>
+        <KidneyDiseaseCalculatorCard></KidneyDiseaseCalculatorCard>
       </div>
     </div>
   );

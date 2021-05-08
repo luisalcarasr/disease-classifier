@@ -5,6 +5,7 @@ import { getKidneyDiseaseClassification } from '../utils/getKidneyDiseaseClassif
 import { db } from './database';
 import validationMiddleware from './middlewares/validation';
 import addBloodPressure from './validators/addBloodPressure.validator';
+import addRate from './validators/addRate.validator';
 
 const app = express();
 
@@ -93,9 +94,21 @@ app.get('/e-gfr/last', (req, res) => {
   });
 });
 
-app.post('/e-gfr', (req, res) => {
+app.post('/e-gfr', addRate, validationMiddleware, (req, res) => {
   const rate = req.body;
   db.run('INSERT INTO E_GFR (eGFR, atDate) VALUES(?, ?)', [rate.eGFR, rate.atDate], (result, error) => {
+    if (!error) {
+      res.status(201).json(rate);
+    } else {
+      res.statusCode(500);
+      res.json(error);
+    }
+  });
+});
+
+app.delete('/e-gfr', addRate, validationMiddleware, (req, res) => {
+  const rate = req.query;
+  db.run('DELETE FROM E_GFR WHERE eGFR == ? AND atDate == ?', [rate.eGFR, rate.atDate], (result, error) => {
     if (!error) {
       res.status(201).json(rate);
     } else {
