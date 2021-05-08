@@ -55,6 +55,21 @@ app.post('/blood-pressures', addBloodPressure, validationMiddleware, (req, res) 
   );
 });
 
+app.delete('/blood-pressures', addBloodPressure, validationMiddleware, (req, res) => {
+  const bp = req.query;
+  db.run(
+    'DELETE FROM BLOOD_PRESSURES WHERE SysBP == ? AND DiaBP == ? AND atDate == ?',
+    [bp.SysBP, bp.DiaBP, bp.atDate],
+    (results, error) => {
+      if (!error) {
+        res.status(200).json(bp);
+      } else {
+        res.status(500).json(error);
+      }
+    }
+  );
+});
+
 app.get('/e-gfr', (req, res) => {
   db.all('SELECT * FROM E_GFR ORDER BY atDate DESC', [], (error, rates) => {
     if (error) {

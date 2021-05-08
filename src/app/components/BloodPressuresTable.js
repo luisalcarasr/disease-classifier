@@ -1,6 +1,13 @@
-import { Table } from 'semantic-ui-react';
+import axios from 'axios';
+import { Button, Table } from 'semantic-ui-react';
 
-function BloodPressureTable({ bloodPressures }) {
+function BloodPressureTable({ bloodPressures, onDelete }) {
+  const deleteBloodPressure = (bp) => {
+    axios.delete('http://localhost:3001/blood-pressures', { params: bp }).then(() => {
+      onDelete(bp);
+    });
+  };
+
   return (
     <div>
       <Table celled>
@@ -9,6 +16,7 @@ function BloodPressureTable({ bloodPressures }) {
             <Table.HeaderCell>SysBP</Table.HeaderCell>
             <Table.HeaderCell>DiaBP</Table.HeaderCell>
             <Table.HeaderCell>Date</Table.HeaderCell>
+            <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -18,13 +26,16 @@ function BloodPressureTable({ bloodPressures }) {
               <Table.Cell>{bp.SysBP}</Table.Cell>
               <Table.Cell>{bp.DiaBP}</Table.Cell>
               <Table.Cell>{bp.atDate}</Table.Cell>
+              <Table.Cell textAlign="center">
+                <Button color="red" icon="trash" onClick={() => deleteBloodPressure(bp)}></Button>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
 
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan="3">
+            <Table.HeaderCell colSpan="4">
               <span>{bloodPressures.length} records stored.</span>
             </Table.HeaderCell>
           </Table.Row>
