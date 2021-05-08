@@ -14,6 +14,7 @@ function KidneyDiseaseCalculatorTable({ rates, onDelete }) {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>eGFR</Table.HeaderCell>
+            <Table.HeaderCell>Drop</Table.HeaderCell>
             <Table.HeaderCell>Date</Table.HeaderCell>
             <Table.HeaderCell>Actions</Table.HeaderCell>
           </Table.Row>
@@ -23,6 +24,7 @@ function KidneyDiseaseCalculatorTable({ rates, onDelete }) {
           {rates.map((rate, index) => (
             <Table.Row key={index}>
               <Table.Cell>{rate.eGFR}</Table.Cell>
+              <Table.Cell negative={rate.drop >= 0.2}>{rate.drop ? rate.drop * 100 + '%' : null}</Table.Cell>
               <Table.Cell>{rate.atDate}</Table.Cell>
               <Table.Cell textAlign="center">
                 <Button color="red" icon="trash" onClick={() => deleteRate(rate)}></Button>

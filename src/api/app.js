@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express, { json } from 'express';
+import { getEGFRDrop } from '../utils/getEGFRdrop';
 import { getHypertensionStage } from '../utils/getHypertensionStage';
 import { getKidneyDiseaseClassification } from '../utils/getKidneyDiseaseClassification';
 import { db } from './database';
@@ -72,12 +73,18 @@ app.delete('/blood-pressures', addBloodPressure, validationMiddleware, (req, res
 });
 
 app.get('/e-gfr', (req, res) => {
-  db.all('SELECT * FROM E_GFR ORDER BY atDate DESC', [], (error, rates) => {
+  db.all('SELECT * FROM E_GFR ORDER BY atDate ASC', [], (error, rates) => {
     if (error) {
       res.statusCode(500);
       res.json(error);
     } else {
-      res.json(rates);
+      rates = rates.map((rate, index) => {
+        if (index !== 0) {
+          rate.drop = getEGFRDrop(rates[index - 1].eGFR, rate.eGFR);
+        }
+        return rate;
+      });
+      res.json(rates.reverse());
     }
   });
 });
