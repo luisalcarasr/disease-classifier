@@ -6,19 +6,31 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api:start": "babel-node --experimental-modules --es-module-specifier-resolution=node src/api/server.js",
+    "api:migrate": "babel-node --experimental-modules --es-module-specifier-resolution=node src/api/database/migrations.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-semantic-ui-datepickers": "^2.17.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.1.3"
+    "semantic-ui-react": "^2.1.3",
+    "sqlite3": "^5.0.11"
   },
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.13",
+    "@babel/node": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@types/lodash-es": "^4.17.6",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/semantic-ui": "^2.2.7",

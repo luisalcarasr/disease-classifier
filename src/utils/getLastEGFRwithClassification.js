@@ -1,4 +1,4 @@
-import { clone, isArray, sortBy } from 'lodash';
+import { clone, isArray, sortBy } from 'lodash-es';
 import { getKidneyDiseaseClassification } from './getKidneyDiseaseClassification';
 
 const getLastEGFRwithClassification = (data) => {

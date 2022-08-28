@@ -1,4 +1,4 @@
-import { isNumber } from 'lodash';
+import { isNumber } from 'lodash-es';
 
 const getKidneyDiseaseClassification = (eGFR) => {
   if (!isNumber(eGFR)) throw new Error('eGFR must be number.');
