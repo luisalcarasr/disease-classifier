@@ -1,58 +1,29 @@
 {
   "name": "disease-classifier",
-  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.1",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-validator": "^6.10.1",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "react": "^17.0.2",
-    "react-charts": "^2.0.0-beta.7",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "react-semantic-ui-datepickers": "^2.13.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
-    "sqlite3": "^5.0.2",
-    "web-vitals": "^1.1.1"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "ui:start": "react-scripts start",
-    "ui:build": "react-scripts build",
-    "ui:eject": "react-scripts eject",
-    "api:start": "babel-node src/api/server.js",
-    "api:migrate": "babel-node src/api/database/migrations.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "axios": "^0.27.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-semantic-ui-datepickers": "^2.17.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.0",
-    "@babel/node": "^7.13.13",
-    "@babel/preset-env": "^7.14.1"
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/semantic-ui": "^2.2.7",
+    "@vitejs/plugin-react": "^2.0.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7"
   }
 }

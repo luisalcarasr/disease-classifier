@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Grid } from 'semantic-ui-react';
 import BloodPressureForm from './BloodPressureForm';
 import BloodPressuresLast from './BloodPressureLast';
-import BloodPressureChart from './BloodPressuresChart';
+// import BloodPressureChart from './BloodPressuresChart';
 import BloodPressureTable from './BloodPressuresTable';
 
 const BloodPressuresCard = () => {
@@ -42,7 +42,6 @@ const BloodPressuresCard = () => {
               <BloodPressureTable bloodPressures={bloodPressures} onDelete={refresh}></BloodPressureTable>
             </Grid.Column>
             <Grid.Column>
-              <BloodPressureChart bloodPressures={bloodPressures.reverse()}></BloodPressureChart>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -50,5 +49,7 @@ const BloodPressuresCard = () => {
     </Card>
   );
 };
+
+//  <BloodPressureChart bloodPressures={bloodPressures.reverse()}></BloodPressureChart>
 
 export default BloodPressuresCard;

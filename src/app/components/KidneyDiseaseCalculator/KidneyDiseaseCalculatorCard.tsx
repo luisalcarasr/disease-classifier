@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Card, Grid } from 'semantic-ui-react';
-import KidneyDiseaseCalculatorChart from './KidneyDiseaseCalculatorChart';
+// import KidneyDiseaseCalculatorChart from './KidneyDiseaseCalculatorChart';
 import KidneyDiseaseCalculatorForm from './KidneyDiseaseCalculatorForm';
 import KidneyDiseaseCalculatorLast from './KidneyDiseaseCalculatorLast';
 import KidneyDiseaseCalculatorTable from './KidneyDiseaseCalculatorTable';
@@ -42,7 +42,6 @@ const KidneyDiseaseCalculatorCard = () => {
               <KidneyDiseaseCalculatorTable rates={rates} onDelete={refresh}></KidneyDiseaseCalculatorTable>
             </Grid.Column>
             <Grid.Column>
-              <KidneyDiseaseCalculatorChart rates={rates.reverse()}></KidneyDiseaseCalculatorChart>
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -50,5 +49,7 @@ const KidneyDiseaseCalculatorCard = () => {
     </Card>
   );
 };
+
+// <KidneyDiseaseCalculatorChart rates={rates.reverse()}></KidneyDiseaseCalculatorChart>
 
 export default KidneyDiseaseCalculatorCard;
