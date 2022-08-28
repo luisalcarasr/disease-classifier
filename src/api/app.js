@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express, { json } from 'express';
-import { getEGFRDrop } from '../utils/getEGFRdrop';
+import { getEGFRDrop } from '../utils/getEGFRDrop';
 import { getHypertensionStage } from '../utils/getHypertensionStage';
 import { getKidneyDiseaseClassification } from '../utils/getKidneyDiseaseClassification';
 import { db } from './database/database';
