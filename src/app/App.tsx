@@ -7,7 +7,7 @@ function App() {
     <div id="app">
       <header>
         <nav>
-          <h1>Auxita - Disease Classifier (Code Challenge)</h1>
+          <h1>Disease Classifier</h1>
         </nav>
       </header>
       <div id="main-container">
