@@ -1,8 +1,14 @@
 import axios from 'axios';
 import { Button, Table } from 'semantic-ui-react';
+import { Rate } from './KidneyDiseaseCalculatorChart';
 
-function KidneyDiseaseCalculatorTable({ rates, onDelete }) {
-  const deleteRate = (rate) => {
+interface Props {
+  rates: Rate[];
+  onDelete: (rate: Rate) => void;
+}
+
+const KidneyDiseaseCalculatorTable = ({ rates, onDelete }: Props) => {
+  const deleteRate = (rate: Rate) => {
     axios.delete('http://localhost:3001/e-gfr', { params: rate }).then(() => {
       onDelete(rate);
     });

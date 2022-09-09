@@ -1,32 +1,45 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, FormProps } from 'semantic-ui-react';
 
-const BloodPressureForm = ({ onAdd = () => {} }) => {
-  const [errors, setErrors] = useState({});
-  const [date, setDate] = useState('');
+interface Response {
 
-  const addBloodPressure = (event) => {
-    let bp = {};
-    new FormData(event.target).forEach((value, key) => {
-      bp[key] = value;
-    });
+}
+
+interface Errors {
+  DiaBP?: string;
+  SysBP?: string;
+  atDate?: string;
+}
+
+const BloodPressureForm = ({ onAdd = (a: any) => {} }) => {
+  const [errors, setErrors] = useState<Errors>({});
+  const [date, setDate] = useState<Date>();
+
+  const addBloodPressure = (event: FormEvent, data: FormProps) => {
+    let bp: any = {};
+    if (event.target instanceof HTMLFormElement) {
+      new FormData(event.target).forEach((value, key) => {
+        bp[key] = value;
+      });
+    }
     axios
       .post('http://localhost:3001/blood-pressures', bp)
       .then((response) => {
         onAdd(response.data);
       })
       .catch((err) => {
-        const mistakes = {};
+        const mistakes: any = {};
         for (const key in err.response.data) {
           mistakes[key] = err.response.data[key].pop();
         }
         setErrors(mistakes);
       })
       .finally(() => {
-        event.target.reset();
-        setDate('');
+        if (event.target instanceof HTMLFormElement) {
+          event.target.reset();
+        }
         setDate(undefined);
       });
   };

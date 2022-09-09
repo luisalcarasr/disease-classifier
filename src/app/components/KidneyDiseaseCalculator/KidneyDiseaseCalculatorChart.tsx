@@ -1,8 +1,18 @@
 import moment from 'moment';
-import React, { useMemo } from 'react';
-import { Chart } from 'react-charts';
+import { useMemo } from 'react';
 
-const KidneyDiseaseCalculatorChart = ({ rates }) => {
+export interface Rate {
+  eGFR: string
+  atDate: string
+  classification: string
+  drop: number
+}
+
+interface Props {
+  rates: Rate[]
+}
+
+const KidneyDiseaseCalculatorChart = ({ rates }: Props) => {
   const data = useMemo(
     () => [
       {
@@ -23,9 +33,9 @@ const KidneyDiseaseCalculatorChart = ({ rates }) => {
 
   return (
     <div style={{ height: '100%' }}>
-      <Chart data={data} axes={axes} />
     </div>
   );
+  // <Chart data={data} axes={axes} />
 };
 
 export default KidneyDiseaseCalculatorChart;

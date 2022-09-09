@@ -1,32 +1,41 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import { Button, Form } from 'semantic-ui-react';
 
-const KidneyDiseaseCalculatorForm = ({ onAdd = () => {} }) => {
-  const [errors, setErrors] = useState({});
-  const [date, setDate] = useState('');
+interface Errors {
+  DiaBP?: string;
+  eGFR?: string;
+  atDate?: string;
+}
 
-  const addRate = (event) => {
-    let rate = {};
-    new FormData(event.target).forEach((value, key) => {
-      rate[key] = value;
-    });
+const KidneyDiseaseCalculatorForm = ({ onAdd = (_: any) => {} }) => {
+  const [errors, setErrors] = useState<Errors>({});
+  const [date, setDate] = useState<Date>();
+
+  const addRate = (event: FormEvent) => {
+    let rate: any = {};
+    if (event.target instanceof HTMLFormElement) {
+      new FormData(event.target).forEach((value, key) => {
+        rate[key] = value;
+      });
+    }
     axios
       .post('http://localhost:3001/e-gfr', rate)
       .then((response) => {
         onAdd(response.data);
       })
       .catch((err) => {
-        const mistakes = {};
+        const mistakes: any = {};
         for (const key in err.response.data) {
           mistakes[key] = err.response.data[key].pop();
         }
         setErrors(mistakes);
       })
       .finally(() => {
-        event.target.reset();
-        setDate('');
+        if (event.target instanceof HTMLFormElement) {
+          event.target.reset();
+        }
         setDate(undefined);
       });
   };

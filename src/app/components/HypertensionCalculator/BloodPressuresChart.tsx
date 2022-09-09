@@ -1,8 +1,13 @@
 import moment from 'moment';
-import React, { useMemo } from 'react';
-import { Chart } from 'react-charts';
+import { useMemo } from 'react';
+// import { Chart } from 'react-charts';
+import { BloodPressure } from './BloodPressureLast';
 
-const BloodPressuresChart = ({ bloodPressures }) => {
+interface Props {
+  bloodPressures: BloodPressure[]
+}
+
+const BloodPressuresChart = ({ bloodPressures }: Props) => {
   const data = useMemo(
     () => [
       {
@@ -27,9 +32,9 @@ const BloodPressuresChart = ({ bloodPressures }) => {
 
   return (
     <div style={{ height: '100%' }}>
-      <Chart data={data} axes={axes} />
     </div>
   );
+  // <Chart data={data} axes={axes} />
 };
 
 export default BloodPressuresChart;

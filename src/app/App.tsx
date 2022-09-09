@@ -1,8 +1,9 @@
+import { ReactElement } from 'react';
 import './App.css';
 import BloodPressuresCard from './components/HypertensionCalculator/BloodPressureCard';
 import KidneyDiseaseCalculatorCard from './components/KidneyDiseaseCalculator/KidneyDiseaseCalculatorCard';
 
-function App() {
+const App = (): ReactElement => {
   return (
     <div id="app">
       <header>
@@ -11,8 +12,8 @@ function App() {
         </nav>
       </header>
       <div id="main-container">
-        <BloodPressuresCard></BloodPressuresCard>
-        <KidneyDiseaseCalculatorCard></KidneyDiseaseCalculatorCard>
+        <BloodPressuresCard />
+        <KidneyDiseaseCalculatorCard />
       </div>
     </div>
   );

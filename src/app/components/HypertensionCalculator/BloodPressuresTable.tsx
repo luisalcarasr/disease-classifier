@@ -1,8 +1,14 @@
 import axios from 'axios';
 import { Button, Table } from 'semantic-ui-react';
+import { BloodPressure } from './BloodPressureLast';
 
-function BloodPressureTable({ bloodPressures, onDelete }) {
-  const deleteBloodPressure = (bp) => {
+interface Props {
+  bloodPressures: BloodPressure[];
+  onDelete: (bp: BloodPressure) => void;
+}
+
+function BloodPressureTable({ bloodPressures, onDelete }: Props) {
+  const deleteBloodPressure = (bp: BloodPressure) => {
     axios.delete('http://localhost:3001/blood-pressures', { params: bp }).then(() => {
       onDelete(bp);
     });

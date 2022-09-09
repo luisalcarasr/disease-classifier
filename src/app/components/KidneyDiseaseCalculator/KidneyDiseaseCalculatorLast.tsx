@@ -1,7 +1,11 @@
-import React from 'react';
 import { Message } from 'semantic-ui-react';
+import { Rate } from './KidneyDiseaseCalculatorChart';
 
-const KidneyDiseaseCalculatorLast = ({ rate }) => {
+interface Props {
+  rate: Rate
+}
+
+const KidneyDiseaseCalculatorLast = ({ rate }: Props) => {
   return (
     <Message>
       <Message.Header>Last Blood Pressure</Message.Header>

@@ -1,7 +1,17 @@
-import React from 'react';
 import { Message } from 'semantic-ui-react';
 
-const BloodPressuresLast = ({ bloodPressure }) => {
+export interface BloodPressure {
+  SysBP: string
+  DiaBP: string
+  classification: string
+  atDate: string
+}
+
+interface Props {
+  bloodPressure: BloodPressure 
+}
+
+const BloodPressuresLast = ({ bloodPressure }: Props) => {
   return (
     <Message>
       <Message.Header>Latest reading</Message.Header>
