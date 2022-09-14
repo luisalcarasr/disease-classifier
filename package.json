@@ -37,15 +37,15 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/semantic-ui": "^2.2.7",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@vitejs/plugin-react": "^2.0.1",
-    "eslint": "^8.23.0",
-    "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint": "^8.23.1",
+    "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.5",
     "eslint-plugin-promise": "^6.0.1",
-    "eslint-plugin-react": "^7.31.4",
-    "typescript": "^4.8.2",
+    "eslint-plugin-react": "^7.31.8",
+    "typescript": "^4.8.3",
     "vite": "^3.0.7"
   }
 }
